@@ -25,6 +25,8 @@ on:
       - ".github/workflows/build.yml"
       - "security/**"
       - "cyclonedx-lib/**"
+  push:
+    branches: '*'
 
 # Cancel existing runs if user makes another push.
 concurrency:
