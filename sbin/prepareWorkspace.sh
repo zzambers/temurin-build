@@ -40,8 +40,8 @@ FREETYPE_FONT_SHARED_OBJECT_FILENAME="libfreetype.so*"
 # sha256 of https://github.com/adoptium/devkit-binaries/releases/tag/vs2022_redist_14.40.33807_10.0.26100.1742
 WINDOWS_REDIST_CHECKSUM="ac6060f5f8a952f59faef20e53d124c2c267264109f3f6fabeb2b7aefb3e3c62"
 
-GTEST_VERSION=1.16.0
-GTEST_CHECKSUM="78c676fc63881529bf97bf9d45948d905a66833fbfa5318ea2cd7478cb98f399"
+GTEST_VERSION=1.14.0
+GTEST_CHECKSUM="8ad598c73ad796e0d8280b082cebd82a630d73e73cd3c70057938a6501bba5d7"
 
 copyFromDir() {
   echo "Copying OpenJDK source from  ${BUILD_CONFIG[OPENJDK_LOCAL_SOURCE_ARCHIVE_ABSPATH]} to $(pwd)/${BUILD_CONFIG[OPENJDK_SOURCE_DIR]} to be built"
@@ -826,7 +826,7 @@ downloadGtest() {
     echo "Reusing $gtestUnpacked"
   else
     local gtestArchive="${BUILD_CONFIG[WORKSPACE_DIR]}/libs/googletest-${GTEST_VERSION}.tar.gz"
-    downloadFile "${gtestArchive}" "https://github.com/google/googletest/releases/download/v${GTEST_VERSION}/googletest-${GTEST_VERSION}.tar.gz" "${GTEST_CHECKSUM}"
+    downloadFile "${gtestArchive}" "https://github.com/google/googletest/archive/refs/tags/v${GTEST_VERSION}.tar.gz" "${GTEST_CHECKSUM}"
     mkdir -p "${gtestUnpacked}"
     tar -xzf "${gtestArchive}" --strip-components=1  -C "${gtestUnpacked}"
     rm -f "${gtestArchive}"
